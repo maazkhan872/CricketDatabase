@@ -116,6 +116,16 @@ INSERT INTO Players (p_name, p_role, p_bowlingstyle, p_battingstyle, t_id) VALUE
 ('Mitchel Starc', 'Bowler', 'Left-Hand', 'Left-Hand-Batsmen', 4);
 SELECT * FROM Players
 
+-- Player Performance per Match
+SELECT 
+p.p_name,
+m.m_id,
+s.s_runs,
+s.s_wickets
+FROM Statistics s
+JOIN Players p ON s.p_id = p.p_id
+JOIN Matches m ON s.m_id = m.m_id;
+
 -- Insert data into Venue table
 INSERT INTO Venues (v_name) VALUES 
 ('National Stadium Karachi'),
@@ -125,6 +135,14 @@ INSERT INTO Venues (v_name) VALUES
 ('The Oval');
 SELECT * FROM Venues
 
+-- Top Run Scorers
+SELECT 
+p.p_name,
+SUM(s.s_runs) AS TotalRuns
+FROM Statistics s
+JOIN Players p ON s.p_id = p.p_id
+GROUP BY p.p_name
+ORDER BY TotalRuns DESC;
 
 INSERT INTO Umpire (u_name) VALUES
 ('Aleem Dar'),
@@ -133,6 +151,14 @@ INSERT INTO Umpire (u_name) VALUES
 ('Marais Erasmus'),
 ('Paul Reiffel');
 SELECT * FROM Umpire
+
+-- Tournament Matches
+SELECT 
+ta.ta_name,
+COUNT(m.m_id) AS TotalMatches
+FROM Matches m
+JOIN Tournaments ta ON m.ta_id = ta.ta_id
+GROUP BY ta.ta_name;
 
 -- Insert data into Tournament table
 INSERT INTO Tournaments (ta_name, ta_year) VALUES
