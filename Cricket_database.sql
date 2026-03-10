@@ -76,6 +76,15 @@ FOREIGN KEY (p_id) REFERENCES Players(p_id),
 FOREIGN KEY (m_id) REFERENCES Matches(m_id)
 )
 
+CREATE TABLE Match_Teams (
+    mt_id INT PRIMARY KEY AUTO_INCREMENT,
+    m_id INT,
+    t_id INT,
+    team_role VARCHAR(20), -- Home / Away
+    FOREIGN KEY (m_id) REFERENCES Matches(m_id),
+    FOREIGN KEY (t_id) REFERENCES Team(t_id)
+);
+
 -- Insert data into Coach table
 INSERT INTO Coaches (c_name) VALUES ('Gary Kirsten'),
 ('Jawed Miandad'),
@@ -83,6 +92,11 @@ INSERT INTO Coaches (c_name) VALUES ('Gary Kirsten'),
 ('Vivian Rechards'),
 ('Ian Chappel');
 SELECT * FROM Coaches
+
+SELECT p.p_name, t.t_name, c.c_name
+FROM Players p
+JOIN Team t ON p.t_id = t.t_id
+JOIN Coaches c ON t.c_id = c.c_id;
 
 -- Insert data into Team table
 INSERT INTO Team (t_id, t_name, c_id) VALUES 
