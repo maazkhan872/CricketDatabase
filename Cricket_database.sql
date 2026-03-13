@@ -251,3 +251,12 @@ JOIN Statistics ON Players.p_id = Statistics.p_id
 GROUP BY Players.p_name
 ORDER BY TotalWickets DESC;
 
+-- (Match + Umpires)
+SELECT 
+m.m_id,
+m.DATE,
+u1.u_name AS Umpire1,
+u2.u_name AS Umpire2
+FROM Matches m
+LEFT JOIN Umpire u1 ON m.u1_id = u1.u_id
+LEFT JOIN Umpire u2 ON m.u2_id = u2.u_id;
