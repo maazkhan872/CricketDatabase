@@ -260,3 +260,12 @@ u2.u_name AS Umpire2
 FROM Matches m
 LEFT JOIN Umpire u1 ON m.u1_id = u1.u_id
 LEFT JOIN Umpire u2 ON m.u2_id = u2.u_id;
+
+-- Venue Analysis
+SELECT 
+v.v_name AS VenueName,
+COUNT(m.m_id) AS TotalMatches
+FROM Venues v
+LEFT JOIN Matches m ON v.v_id = m.v_id
+GROUP BY v.v_name
+ORDER BY TotalMatches DESC;
