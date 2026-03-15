@@ -67,3 +67,5 @@ Relational database design
 SQL queries for data manipulation
 Data aggregation and analysis
 Real-world sports database modeling
+
+Database Enhancement: Added advanced SQL queries to the Cricket Database for professional analysis. These include: fetching match details along with umpire assignments, and analyzing the number of matches held at each venue. These queries improve the database’s usability and provide deeper insights into teams, players, and tournament statistics.
