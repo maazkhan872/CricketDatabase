@@ -273,3 +273,13 @@ ORDER BY TotalMatches DESC;
 -- Added indexes on frequently used foreign keys to improve query performance --
 CREATE INDEX idx_players_team ON Players(t_id);
 SHOW INDEX FROM Players;
+
+CREATE INDEX idx_matches_venue ON Matches(v_id);
+EXPLAIN SELECT * 
+FROM Matches 
+WHERE v_id = 2;
+
+EXPLAIN
+SELECT m.m_id, v.v_name
+FROM Matches m
+JOIN Venues v ON m.v_id = v.v_id;
