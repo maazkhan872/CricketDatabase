@@ -283,3 +283,8 @@ EXPLAIN
 SELECT m.m_id, v.v_name
 FROM Matches m
 JOIN Venues v ON m.v_id = v.v_id;
+
+CREATE INDEX idx_statistics_player_match 
+ON Statistics(p_id, m_id);
+
+SHOW INDEX FROM Statistics;
