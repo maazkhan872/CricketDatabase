@@ -269,3 +269,7 @@ FROM Venues v
 LEFT JOIN Matches m ON v.v_id = m.v_id
 GROUP BY v.v_name
 ORDER BY TotalMatches DESC;
+
+-- Added indexes on frequently used foreign keys to improve query performance --
+CREATE INDEX idx_players_team ON Players(t_id);
+SHOW INDEX FROM Players;
