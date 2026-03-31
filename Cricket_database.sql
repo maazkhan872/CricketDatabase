@@ -288,3 +288,7 @@ CREATE INDEX idx_statistics_player_match
 ON Statistics(p_id, m_id);
 
 SHOW INDEX FROM Statistics;
+
+-- Creating a composite index on team IDs to optimize match queries involving both teams -- 
+CREATE INDEX idx_matches_team 
+ON Matches(t1_id, t2_id);
