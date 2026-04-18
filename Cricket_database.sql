@@ -295,3 +295,27 @@ ON Matches(t1_id, t2_id);
 
 -- Displaying all indexes on Matches table to verify index creation
 SHOW INDEX FROM Matches;
+
+CREATE TABLE Ball_By_Ball (
+    b_id INT PRIMARY KEY AUTO_INCREMENT,
+    m_id INT,
+    over_number INT,
+    ball_number INT,
+    striker_id INT,
+    bowler_id INT,
+    runs_scored INT,
+    is_wicket BOOLEAN,
+    
+    FOREIGN KEY (m_id) REFERENCES Matches(m_id),
+    FOREIGN KEY (striker_id) REFERENCES Players(p_id),
+    FOREIGN KEY (bowler_id) REFERENCES Players(p_id)
+);
+
+INSERT INTO Ball_By_Ball 
+(m_id, over_number, ball_number, striker_id, bowler_id, runs_scored, is_wicket)
+VALUES
+(1, 1, 1, 1, 3, 4, FALSE),
+(1, 1, 2, 1, 3, 0, FALSE),
+(1, 1, 3, 1, 3, 1, FALSE),
+(1, 1, 4, 2, 3, 6, FALSE),
+(1, 1, 5, 2, 3, 0, TRUE);
