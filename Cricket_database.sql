@@ -296,6 +296,7 @@ ON Matches(t1_id, t2_id);
 -- Displaying all indexes on Matches table to verify index creation
 SHOW INDEX FROM Matches;
 
+-- Create Ball_By_Ball Table -- 
 CREATE TABLE Ball_By_Ball (
     b_id INT PRIMARY KEY AUTO_INCREMENT,
     m_id INT,
@@ -311,6 +312,7 @@ CREATE TABLE Ball_By_Ball (
     FOREIGN KEY (bowler_id) REFERENCES Players(p_id)
 );
 
+-- Insertion --
 INSERT INTO Ball_By_Ball 
 (m_id, over_number, ball_number, striker_id, bowler_id, runs_scored, is_wicket)
 VALUES
@@ -319,3 +321,12 @@ VALUES
 (1, 1, 3, 1, 3, 1, FALSE),
 (1, 1, 4, 2, 3, 6, FALSE),
 (1, 1, 5, 2, 3, 0, TRUE);
+
+-- Runs per Player in a Match --
+SELECT 
+p.p_name,
+SUM(b.runs_scored) AS TotalRuns
+FROM Ball_By_Ball b
+JOIN Players p ON b.striker_id = p.p_id
+WHERE b.m_id = 1
+GROUP BY p.p_name;
