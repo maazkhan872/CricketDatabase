@@ -330,3 +330,12 @@ FROM Ball_By_Ball b
 JOIN Players p ON b.striker_id = p.p_id
 WHERE b.m_id = 1
 GROUP BY p.p_name;
+
+-- Wickets by Bowler --
+SELECT 
+p.p_name,
+COUNT(*) AS Wickets
+FROM Ball_By_Ball b
+JOIN Players p ON b.bowler_id = p.p_id
+WHERE b.is_wicket = TRUE
+GROUP BY p.p_name;
