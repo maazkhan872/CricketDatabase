@@ -339,3 +339,5 @@ FROM Ball_By_Ball b
 JOIN Players p ON b.bowler_id = p.p_id
 WHERE b.is_wicket = TRUE
 GROUP BY p.p_name;
+
+CREATE INDEX idx_ball_match ON Ball_By_Ball(m_id);
