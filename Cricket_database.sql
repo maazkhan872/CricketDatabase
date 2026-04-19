@@ -341,3 +341,5 @@ WHERE b.is_wicket = TRUE
 GROUP BY p.p_name;
 
 CREATE INDEX idx_ball_match ON Ball_By_Ball(m_id);
+SHOW INDEX FROM Matches
+WHERE Key_name = 'idx_matches_team';
