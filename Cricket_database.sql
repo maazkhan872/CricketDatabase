@@ -343,3 +343,6 @@ GROUP BY p.p_name;
 CREATE INDEX idx_ball_match ON Ball_By_Ball(m_id);
 SHOW INDEX FROM Matches
 WHERE Key_name = 'idx_matches_team';
+
+-- Show all indexes on Matches table
+SHOW INDEX FROM Matches;
