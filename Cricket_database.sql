@@ -351,3 +351,10 @@ SHOW INDEX FROM Matches;
 CREATE INDEX idx_statistics_match 
 ON Statistics(m_id);
 
+SHOW INDEX FROM Statistics;
+
+CREATE INDEX idx_statistics_player_runs 
+ON Statistics(p_id, s_runs);
+
+SHOW INDEX FROM Statistics 
+WHERE Key_name = 'idx_statistics_player_runs';
