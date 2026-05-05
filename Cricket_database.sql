@@ -346,3 +346,8 @@ WHERE Key_name = 'idx_matches_team';
 
 -- Show all indexes on Matches table
 SHOW INDEX FROM Matches;
+
+-- Create --
+CREATE INDEX idx_statistics_match 
+ON Statistics(m_id);
+
