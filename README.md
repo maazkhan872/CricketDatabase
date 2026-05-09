@@ -5,6 +5,15 @@ The Cricket Database Management System is a SQL-based project designed to manage
 
 This project demonstrates fundamental concepts of Database Management Systems (DBMS) including relational schema design, table relationships, foreign keys, and SQL queries for data analysis.
 
+🏛 Database Architecture & Schema Design
+The project implements a highly normalized 3NF (Third Normal Form) schema to eliminate data redundancy and ensure referential integrity.
+
+Core Entities: Players, Teams, Matches, Venues, and Umpires.
+
+Performance Metrics: Detailed tables for Batting (Runs, Strike Rate, 4s/6s), Bowling (Wickets, Economy, Dots), and Fielding.
+
+Relationship Mapping: Complex many-to-many relationships between players and matches, handled via optimized junction tables.
+
 🧱 Database Structure
 
 The database contains the following tables:
