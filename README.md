@@ -58,6 +58,11 @@ MySQL
 Relational Database Concepts
 DBMS
 
+⚡ Optimized Querying & Indexing
+Clustered Indexing: Applied on Match_ID and Player_ID for sub-second query responses during large-scale data retrieval.
+
+Stored Procedures: Automated calculation of "Player Rankings" and "In-Form Streaks" directly within the database layer.
+
 ▶️ How to Run the Project
 
 Install MySQL Server
