@@ -82,4 +82,10 @@ Data aggregation and analysis
 Real-world sports database modeling
 
 Database Enhancement: Added advanced SQL queries to the Cricket Database for professional analysis. These include: fetching match details along with umpire assignments, and analyzing the number of matches held at each venue. These queries improve the database’s usability and provide deeper insights into teams, players, and tournament statistics.
-These queries use multi-table JOINs and aggregation to deliver clear insights into player performances, team statistics, and tournament results. This upgrade makes the database **more analytical and professional**, providing a strong demonstration of SQL proficiency and real-world relational database design.
+These queries use multi-table JOINs and aggregation to deliver clear insights into player performances, team statistics, and tournament results. This upgrade makes the database more analytical and professional, providing a strong demonstration of SQL proficiency and real-world relational database design.
+
+Note:
+The repository includes a comprehensive SQL script featuring:
+Advanced Joins: Multi-table joins to generate a full Scorecard.
+Window Functions: Used for calculating cumulative career runs over time.
+Transaction Management: Ensuring atomicity during match data uploads.
