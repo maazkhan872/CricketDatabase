@@ -51,12 +51,11 @@ ORDER BY
 COUNT
 SUM
 
-🛠️ Technologies Used
+💻 Technology 
 
-SQL
-MySQL
-Relational Database Concepts
-DBMS
+RDBMSMySQL (DDL, DML, DCL)
+Backend IntegrationJava (JDBC / Spring Data JPA)
+ModelingER Diagram (MySQL Workbench)
 
 ⚡ Optimized Querying & Indexing
 Clustered Indexing: Applied on Match_ID and Player_ID for sub-second query responses during large-scale data retrieval.
