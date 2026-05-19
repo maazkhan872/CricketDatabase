@@ -38,7 +38,7 @@ Table relationships using Foreign Keys
 
 Data insertion using INSERT
 
-Data modification using UPDATE
+Data modification and updating using UPDATE
 
 Data retrieval using SQL queries
 
