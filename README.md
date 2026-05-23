@@ -8,7 +8,7 @@ This project demonstrates fundamental concepts of Database Management Systems (D
 🏛 Database Architecture & Schema Design
 The project implements a highly normalized 3NF (Third Normal Form) schema to eliminate data redundancy and ensure referential integrity.
 
-Core Entities: Players, Teams, Matches, Venues, and Umpires.
+Core Entities: Players, Teams, Matches, Venues.
 
 Performance Metrics: Detailed tables for Batting (Runs, Strike Rate, 4s/6s), Bowling (Wickets, Economy, Dots), and Fielding.
 
