@@ -358,3 +358,7 @@ ON Statistics(p_id, s_runs);
 
 SHOW INDEX FROM Statistics 
 WHERE Key_name = 'idx_statistics_player_runs';
+
+-- Create Index on Tournament Year for faster searching
+CREATE INDEX idx_tournament_year
+ON Tournaments(ta_year);
