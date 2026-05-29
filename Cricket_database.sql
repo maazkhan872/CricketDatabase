@@ -362,3 +362,8 @@ WHERE Key_name = 'idx_statistics_player_runs';
 -- Create Index on Tournament Year for faster searching
 CREATE INDEX idx_tournament_year
 ON Tournaments(ta_year);
+
+-- Query 1: Show tournaments after 2022
+SELECT *
+FROM Tournaments
+WHERE ta_year > 2022;
