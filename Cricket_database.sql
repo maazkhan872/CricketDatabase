@@ -367,3 +367,7 @@ ON Tournaments(ta_year);
 SELECT *
 FROM Tournaments
 WHERE ta_year > 2022;
+
+SELECT *
+FROM Tournaments
+WHERE ta_year > 2023;
