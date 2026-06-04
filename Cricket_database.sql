@@ -105,6 +105,8 @@ INSERT INTO Team (t_id, t_name, c_id) VALUES
 (3,'India', 3),
 (4,'Australia', 5),
 (5,'South Africa', 4);
+(6,'England', 5);
+(7,'West Indies', 6);
 SELECT * FROM Team
 
 -- Insert data into Player table
