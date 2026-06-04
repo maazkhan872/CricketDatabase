@@ -135,6 +135,8 @@ INSERT INTO Venues (v_name) VALUES
 ('Melbourne Cricket Ground (MCG)'),
 ('Old Trafford'),
 ('The Oval');
+('National Stadium');
+('Sydney Club');
 SELECT * FROM Venues
 
 -- Top Run Scorers
