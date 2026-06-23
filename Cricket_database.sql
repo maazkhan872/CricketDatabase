@@ -375,3 +375,26 @@ WHERE ta_year > 2022;
 SELECT *
 FROM Tournaments
 WHERE ta_year > 2023;
+
+-- Tournament Wise Total Runs --
+SELECT 
+    t.ta_name AS TournamentName,
+    t.ta_year AS TournamentYear,
+    SUM(s.s_runs) AS TotalRuns
+FROM Statistics s
+JOIN Matches m ON s.m_id = m.m_id
+JOIN Tournaments t ON m.ta_id = t.ta_id
+GROUP BY t.ta_name, t.ta_year
+ORDER BY TotalRuns DESC;
+
+-- Best All-Rounder Performance --
+SELECT 
+    p.p_name AS PlayerName,
+    SUM(s.s_runs) AS TotalRuns,
+    SUM(s.s_wickets) AS TotalWickets
+FROM Players p
+JOIN Statistics s ON p.p_id = s.p_id
+GROUP BY p.p_name
+HAVING SUM(s.s_runs) > 0
+   AND SUM(s.s_wickets) > 0
+ORDER BY TotalRuns DESC, TotalWickets DESC;
