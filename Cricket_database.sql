@@ -398,3 +398,17 @@ GROUP BY p.p_name
 HAVING SUM(s.s_runs) > 0
    AND SUM(s.s_wickets) > 0
 ORDER BY TotalRuns DESC, TotalWickets DESC;
+
+-- Tournament-wise Winning Team Count --
+SELECT 
+    t.t_name AS TeamName,
+    COUNT(m.m_id) AS MatchesWon
+FROM Matches m
+JOIN Team t
+ON (
+      (m.t1_id = t.t_id AND m.m_result = 'Won')
+      OR
+      (m.t2_id = t.t_id AND m.m_result = 'Won')
+   )
+GROUP BY t.t_name
+ORDER BY MatchesWon DESC;
