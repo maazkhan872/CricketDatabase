@@ -412,3 +412,23 @@ ON (
    )
 GROUP BY t.t_name
 ORDER BY MatchesWon DESC;
+
+-- Player with Team, Coach and Total Runs  --
+SELECT
+    p.p_name AS PlayerName,
+    t.t_name AS TeamName,
+    c.c_name AS CoachName,
+    COALESCE(SUM(s.s_runs), 0) AS TotalRuns
+FROM Players p
+JOIN Team t
+ON p.t_id = t.t_id
+JOIN Coaches c
+ON t.c_id = c.c_id
+LEFT JOIN Statistics s
+ON p.p_id = s.p_id
+GROUP BY
+    p.p_id,
+    p.p_name,
+    t.t_name,
+    c.c_name
+ORDER BY TotalRuns DESC;
