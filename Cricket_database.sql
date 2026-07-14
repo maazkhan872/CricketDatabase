@@ -444,3 +444,22 @@ JOIN Statistics s
 ON p.p_id = s.p_id
 GROUP BY t.t_name
 ORDER BY TotalRuns DESC;
+
+-- Match Details with Venue and Tournament --
+SELECT
+    m.m_id AS MatchID,
+    m.DATE AS MatchDate,
+    ta.ta_name AS Tournament,
+    ta.ta_year AS Year,
+    v.v_name AS Venue,
+    t1.t_name AS Team1,
+    t2.t_name AS Team2
+FROM Matches m
+JOIN Tournaments ta
+ON m.ta_id = ta.ta_id
+JOIN Venues v
+ON m.v_id = v.v_id
+JOIN Team t1
+ON m.t1_id = t1.t_id
+JOIN Team t2
+ON m.t2_id = t2.t_id;
