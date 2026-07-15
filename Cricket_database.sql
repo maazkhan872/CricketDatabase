@@ -463,3 +463,14 @@ JOIN Team t1
 ON m.t1_id = t1.t_id
 JOIN Team t2
 ON m.t2_id = t2.t_id;
+
+--  Match-wise Total Runs Scored --
+SELECT
+    m.m_id AS MatchID,
+    m.DATE AS MatchDate,
+    SUM(s.s_runs) AS TotalRuns
+FROM Matches m
+JOIN Statistics s
+ON m.m_id = s.m_id
+GROUP BY m.m_id, m.DATE
+ORDER BY TotalRuns DESC;
