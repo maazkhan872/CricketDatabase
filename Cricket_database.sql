@@ -485,3 +485,14 @@ ON p.p_id = s.p_id
 WHERE p.p_role = 'Bowler'
 GROUP BY p.p_name
 ORDER BY TotalWickets DESC;
+
+-- Tournament-wise Number of Matches --
+SELECT
+    t.ta_name AS Tournament,
+    t.ta_year AS Year,
+    COUNT(m.m_id) AS TotalMatches
+FROM Tournaments t
+LEFT JOIN Matches m
+ON t.ta_id = m.ta_id
+GROUP BY t.ta_name, t.ta_year
+ORDER BY t.ta_year DESC;
