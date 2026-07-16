@@ -474,3 +474,14 @@ JOIN Statistics s
 ON m.m_id = s.m_id
 GROUP BY m.m_id, m.DATE
 ORDER BY TotalRuns DESC;
+
+-- Bowler-wise Total Wickets --
+SELECT
+    p.p_name AS Bowler,
+    SUM(s.s_wickets) AS TotalWickets
+FROM Players p
+JOIN Statistics s
+ON p.p_id = s.p_id
+WHERE p.p_role = 'Bowler'
+GROUP BY p.p_name
+ORDER BY TotalWickets DESC;
