@@ -496,3 +496,15 @@ LEFT JOIN Matches m
 ON t.ta_id = m.ta_id
 GROUP BY t.ta_name, t.ta_year
 ORDER BY t.ta_year DESC;
+
+-- Venue-wise Total Runs Scored --
+SELECT
+v.v_name AS VenueName,
+SUM(s.s_runs) AS TotalRuns
+FROM Venues v
+JOIN Matches m
+ON v.v_id = m.v_id
+JOIN Statistics s
+ON m.m_id = s.m_id
+GROUP BY v.v_name
+ORDER BY TotalRuns DESC;
