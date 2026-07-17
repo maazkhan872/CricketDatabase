@@ -508,3 +508,15 @@ JOIN Statistics s
 ON m.m_id = s.m_id
 GROUP BY v.v_name
 ORDER BY TotalRuns DESC;
+
+-- Coach-wise Total Players --
+SELECT
+c.c_name AS CoachName,
+COUNT(p.p_id) AS TotalPlayers
+FROM Coaches c
+JOIN Team t
+ON c.c_id = t.c_id
+LEFT JOIN Players p
+ON t.t_id = p.t_id
+GROUP BY c.c_name
+ORDER BY TotalPlayers DESC;
