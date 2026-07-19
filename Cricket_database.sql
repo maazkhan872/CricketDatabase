@@ -520,3 +520,16 @@ LEFT JOIN Players p
 ON t.t_id = p.t_id
 GROUP BY c.c_name
 ORDER BY TotalPlayers DESC;
+
+-- Tournament-wise Total Wickets --
+SELECT
+    t.ta_name AS TournamentName,
+    t.ta_year AS TournamentYear,
+    SUM(s.s_wickets) AS TotalWickets
+FROM Statistics s
+JOIN Matches m
+    ON s.m_id = m.m_id
+JOIN Tournaments t
+    ON m.ta_id = t.ta_id
+GROUP BY t.ta_name, t.ta_year
+ORDER BY TotalWickets DESC;
