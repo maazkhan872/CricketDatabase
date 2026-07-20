@@ -546,3 +546,12 @@ ON s.p_id = p.p_id
 JOIN Matches m
 ON s.m_id = m.m_id
 ORDER BY m.DATE, p.p_name;
+
+-- Teams That Have Never Played a Match --
+SELECT
+    t.t_name AS TeamName
+FROM Team t
+LEFT JOIN Matches m
+ON t.t_id = m.t1_id
+OR t.t_id = m.t2_id
+WHERE m.m_id IS NULL;
