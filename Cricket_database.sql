@@ -533,3 +533,16 @@ JOIN Tournaments t
     ON m.ta_id = t.ta_id
 GROUP BY t.ta_name, t.ta_year
 ORDER BY TotalWickets DESC;
+
+-- Player Performance with Match Date --
+SELECT
+    p.p_name AS PlayerName,
+    m.DATE AS MatchDate,
+    s.s_runs AS Runs,
+    s.s_wickets AS Wickets
+FROM Statistics s
+JOIN Players p
+ON s.p_id = p.p_id
+JOIN Matches m
+ON s.m_id = m.m_id
+ORDER BY m.DATE, p.p_name;
