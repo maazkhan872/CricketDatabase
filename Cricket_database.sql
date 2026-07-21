@@ -555,3 +555,13 @@ LEFT JOIN Matches m
 ON t.t_id = m.t1_id
 OR t.t_id = m.t2_id
 WHERE m.m_id IS NULL;
+
+--  Average Runs per Player --
+SELECT
+    p.p_name AS PlayerName,
+    AVG(s.s_runs) AS AverageRuns
+FROM Players p
+JOIN Statistics s
+ON p.p_id = s.p_id
+GROUP BY p.p_name
+ORDER BY AverageRuns DESC;
