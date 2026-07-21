@@ -565,3 +565,14 @@ JOIN Statistics s
 ON p.p_id = s.p_id
 GROUP BY p.p_name
 ORDER BY AverageRuns DESC;
+
+-- Number of Matches Officiated by Each Umpire --
+SELECT
+    u.u_name AS UmpireName,
+    COUNT(m.m_id) AS TotalMatches
+FROM Umpire u
+LEFT JOIN Matches m
+ON u.u_id = m.u1_id
+OR u.u_id = m.u2_id
+GROUP BY u.u_name
+ORDER BY TotalMatches DESC;
