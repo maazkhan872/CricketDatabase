@@ -587,3 +587,11 @@ ON t.t_id = p.t_id
 WHERE p.p_role = 'Bowler'
 GROUP BY t.t_name
 HAVING COUNT(p.p_id) > 1;
+
+-- Number of Players by Batting Style --
+SELECT
+    p_battingstyle AS BattingStyle,
+    COUNT(*) AS TotalPlayers
+FROM Players
+GROUP BY p_battingstyle
+ORDER BY TotalPlayers DESC;
