@@ -576,3 +576,14 @@ ON u.u_id = m.u1_id
 OR u.u_id = m.u2_id
 GROUP BY u.u_name
 ORDER BY TotalMatches DESC;
+
+-- Team Having More Than One Bowler --
+SELECT
+    t.t_name AS TeamName,
+    COUNT(p.p_id) AS TotalBowlers
+FROM Team t
+JOIN Players p
+ON t.t_id = p.t_id
+WHERE p.p_role = 'Bowler'
+GROUP BY t.t_name
+HAVING COUNT(p.p_id) > 1;
