@@ -614,3 +614,14 @@ HAVING SUM(s.s_runs) >
         GROUP BY p_id
     ) AS AvgRuns
 );
+
+-- Display Every Match with the Number of Players Who Have Statistics in That Match --
+SELECT
+    m.m_id AS MatchID,
+    m.DATE AS MatchDate,
+    COUNT(DISTINCT s.p_id) AS PlayersPlayed
+FROM Matches m
+LEFT JOIN Statistics s
+ON m.m_id = s.m_id
+GROUP BY m.m_id, m.DATE
+ORDER BY PlayersPlayed DESC;
