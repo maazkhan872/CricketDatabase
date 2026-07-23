@@ -595,3 +595,22 @@ SELECT
 FROM Players
 GROUP BY p_battingstyle
 ORDER BY TotalPlayers DESC;
+
+-- Find Players Who Scored More Runs Than the Average Runs of All Players --
+SELECT
+    p.p_name AS PlayerName,
+    SUM(s.s_runs) AS TotalRuns
+FROM Players p
+JOIN Statistics s
+ON p.p_id = s.p_id
+GROUP BY p.p_id, p.p_name
+HAVING SUM(s.s_runs) >
+(
+    SELECT AVG(PlayerRuns)
+    FROM
+    (
+        SELECT SUM(s_runs) AS PlayerRuns
+        FROM Statistics
+        GROUP BY p_id
+    ) AS AvgRuns
+);
