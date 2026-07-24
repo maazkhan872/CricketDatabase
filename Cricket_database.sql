@@ -635,3 +635,20 @@ JOIN Team t
 ON c.c_id = t.c_id
 GROUP BY c.c_id, c.c_name
 HAVING COUNT(t.t_id) > 1;
+
+-- Show the Highest Run Scorer in Each Match --
+SELECT
+    m.m_id AS MatchID,
+    p.p_name AS PlayerName,
+    s.s_runs AS Runs
+FROM Statistics s
+JOIN Players p
+ON s.p_id = p.p_id
+JOIN Matches m
+ON s.m_id = m.m_id
+WHERE s.s_runs = (
+    SELECT MAX(s2.s_runs)
+    FROM Statistics s2
+    WHERE s2.m_id = s.m_id
+)
+ORDER BY m.m_id;
