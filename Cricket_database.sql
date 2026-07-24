@@ -625,3 +625,13 @@ LEFT JOIN Statistics s
 ON m.m_id = s.m_id
 GROUP BY m.m_id, m.DATE
 ORDER BY PlayersPlayed DESC;
+
+-- Show Coaches Who Have More Than One Team --
+SELECT
+    c.c_name AS CoachName,
+    COUNT(t.t_id) AS TotalTeams
+FROM Coaches c
+JOIN Team t
+ON c.c_id = t.c_id
+GROUP BY c.c_id, c.c_name
+HAVING COUNT(t.t_id) > 1;
