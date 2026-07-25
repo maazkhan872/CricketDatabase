@@ -652,3 +652,16 @@ WHERE s.s_runs = (
     WHERE s2.m_id = s.m_id
 )
 ORDER BY m.m_id;
+
+-- Find the Player who scored the Highest Runs in a Single Match --
+SELECT 
+    p.p_name AS PlayerName,
+    m.m_id AS MatchID,
+    s.s_runs AS Runs
+FROM Statistics s
+JOIN Players p
+ON s.p_id = p.p_id
+JOIN Matches m
+ON s.m_id = m.m_id
+ORDER BY s.s_runs DESC
+LIMIT 1;
