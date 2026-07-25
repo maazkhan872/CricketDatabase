@@ -665,3 +665,16 @@ JOIN Matches m
 ON s.m_id = m.m_id
 ORDER BY s.s_runs DESC
 LIMIT 1;
+
+-- Show Each Venue with the Tournament(s) Played There --
+SELECT
+    v.v_name AS VenueName,
+    t.ta_name AS TournamentName,
+    t.ta_year AS TournamentYear,
+    m.m_id AS MatchID
+FROM Matches m
+JOIN Venues v
+ON m.v_id = v.v_id
+JOIN Tournaments t
+ON m.ta_id = t.ta_id
+ORDER BY v.v_name, t.ta_year;
