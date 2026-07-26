@@ -688,3 +688,23 @@ JOIN Statistics s
 ON p.p_id = s.p_id
 GROUP BY p.p_id, p.p_name
 HAVING COUNT(DISTINCT s.m_id) > 1;
+
+
+-- Display Match Details with Tournament, Venue, and Both Teams --
+SELECT
+    m.m_id AS MatchID,
+    t.ta_name AS Tournament,
+    v.v_name AS Venue,
+    team1.t_name AS Team1,
+    team2.t_name AS Team2,
+    m.m_result AS Result
+FROM Matches m
+JOIN Tournaments t
+ON m.ta_id = t.ta_id
+JOIN Venues v
+ON m.v_id = v.v_id
+JOIN Team team1
+ON m.t1_id = team1.t_id
+JOIN Team team2
+ON m.t2_id = team2.t_id
+ORDER BY m.DATE;
