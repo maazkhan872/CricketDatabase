@@ -678,3 +678,13 @@ ON m.v_id = v.v_id
 JOIN Tournaments t
 ON m.ta_id = t.ta_id
 ORDER BY v.v_name, t.ta_year;
+
+-- Players Who Have Played in More Than One Match --
+SELECT 
+    p.p_name AS PlayerName,
+    COUNT(DISTINCT s.m_id) AS MatchesPlayed
+FROM Players p
+JOIN Statistics s
+ON p.p_id = s.p_id
+GROUP BY p.p_id, p.p_name
+HAVING COUNT(DISTINCT s.m_id) > 1;
