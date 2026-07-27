@@ -719,3 +719,13 @@ ON v.v_id = m.v_id
 GROUP BY v.v_id, v.v_name
 ORDER BY TotalMatches DESC
 LIMIT 1;
+
+-- Find Players Who Have Never Taken a Wicket --
+SELECT 
+    p.p_name AS PlayerName,
+    COALESCE(SUM(s.s_wickets), 0) AS TotalWickets
+FROM Players p
+LEFT JOIN Statistics s
+ON p.p_id = s.p_id
+GROUP BY p.p_id, p.p_name
+HAVING COALESCE(SUM(s.s_wickets), 0) = 0;
