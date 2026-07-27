@@ -708,3 +708,14 @@ ON m.t1_id = team1.t_id
 JOIN Team team2
 ON m.t2_id = team2.t_id
 ORDER BY m.DATE;
+
+-- Find the Most Used Venue --
+SELECT 
+    v.v_name AS VenueName,
+    COUNT(m.m_id) AS TotalMatches
+FROM Venues v
+JOIN Matches m
+ON v.v_id = m.v_id
+GROUP BY v.v_id, v.v_name
+ORDER BY TotalMatches DESC
+LIMIT 1;
