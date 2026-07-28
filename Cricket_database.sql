@@ -739,3 +739,13 @@ LEFT JOIN Team t
 ON c.c_id = t.c_id
 GROUP BY c.c_id, c.c_name
 ORDER BY TotalTeams DESC;
+
+-- Find the Average Runs Scored by Each Player --
+SELECT
+p.p_name AS PlayerName,
+AVG(s.s_runs) AS AverageRuns
+FROM Players p
+JOIN Statistics s
+ON p.p_id = s.p_id
+GROUP BY p.p_id, p.p_name
+ORDER BY AverageRuns DESC;
