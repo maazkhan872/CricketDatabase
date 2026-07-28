@@ -729,3 +729,13 @@ LEFT JOIN Statistics s
 ON p.p_id = s.p_id
 GROUP BY p.p_id, p.p_name
 HAVING COALESCE(SUM(s.s_wickets), 0) = 0;
+
+-- Show Coaches and the Number of Teams They Coach --
+SELECT
+c.c_name AS CoachName,
+COUNT(t.t_id) AS TotalTeams
+FROM Coaches c
+LEFT JOIN Team t
+ON c.c_id = t.c_id
+GROUP BY c.c_id, c.c_name
+ORDER BY TotalTeams DESC;
