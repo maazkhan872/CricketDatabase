@@ -750,6 +750,17 @@ ON p.p_id = s.p_id
 GROUP BY p.p_id, p.p_name
 ORDER BY AverageRuns DESC;
 
+-- Count the Number of Matches Conducted in Each Tournament --
+SELECT
+ta.ta_name AS TournamentName,
+ta.ta_year AS TournamentYear,
+COUNT(m.m_id) AS MatchesPlayed
+FROM Tournaments ta
+LEFT JOIN Matches m
+ON ta.ta_id = m.ta_id
+GROUP BY ta.ta_id, ta.ta_name, ta.ta_year
+ORDER BY ta.ta_year DESC;
+
 -- Find Players Who Played as Bowlers --
 SELECT
 p_name AS PlayerName,
