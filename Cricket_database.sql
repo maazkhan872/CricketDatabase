@@ -749,3 +749,13 @@ JOIN Statistics s
 ON p.p_id = s.p_id
 GROUP BY p.p_id, p.p_name
 ORDER BY AverageRuns DESC;
+
+-- Find Players Who Played as Bowlers --
+SELECT
+p_name AS PlayerName,
+p_bowlingstyle AS BowlingStyle,
+t.t_name AS TeamName
+FROM Players p
+JOIN Team t
+ON p.t_id = t.t_id
+WHERE p_role = 'Bowler';
