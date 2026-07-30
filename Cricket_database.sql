@@ -770,3 +770,13 @@ FROM Players p
 JOIN Team t
 ON p.t_id = t.t_id
 WHERE p_role = 'Bowler';
+
+-- Show Players and the Number of Balls They Faced --
+SELECT
+p.p_name AS PlayerName,
+COUNT(b.b_id) AS BallsFaced
+FROM Players p
+JOIN Ball_By_Ball b
+ON p.p_id = b.striker_id
+GROUP BY p.p_id, p.p_name
+ORDER BY BallsFaced DESC;
