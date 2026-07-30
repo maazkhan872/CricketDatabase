@@ -780,3 +780,15 @@ JOIN Ball_By_Ball b
 ON p.p_id = b.striker_id
 GROUP BY p.p_id, p.p_name
 ORDER BY BallsFaced DESC;
+
+-- Find the Total Runs Scored at Each Venue --
+SELECT
+v.v_name AS VenueName,
+SUM(b.runs_scored) AS TotalRuns
+FROM Ball_By_Ball b
+JOIN Matches m
+ON b.m_id = m.m_id
+JOIN Venues v
+ON m.v_id = v.v_id
+GROUP BY v.v_id, v.v_name
+ORDER BY TotalRuns DESC;
