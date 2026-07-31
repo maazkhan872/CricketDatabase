@@ -792,3 +792,16 @@ JOIN Venues v
 ON m.v_id = v.v_id
 GROUP BY v.v_id, v.v_name
 ORDER BY TotalRuns DESC;
+
+-- Find the Team with the Highest Total Runs --
+SELECT
+t.t_name AS TeamName,
+SUM(s.s_runs) AS TotalRuns
+FROM Team t
+JOIN Players p
+ON t.t_id = p.t_id
+JOIN Statistics s
+ON p.p_id = s.p_id
+GROUP BY t.t_id, t.t_name
+ORDER BY TotalRuns DESC
+LIMIT 1;
