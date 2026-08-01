@@ -815,3 +815,11 @@ LEFT JOIN Matches m
 ON u.u_id = m.u1_id OR u.u_id = m.u2_id
 GROUP BY u.u_id, u.u_name
 ORDER BY MatchesOfficiated DESC;
+
+-- find the Number of Players in Each Role (Batsman/Bowler) --
+SELECT
+    p_role AS PlayerRole,
+    COUNT(*) AS TotalPlayers
+FROM Players
+GROUP BY p_role
+ORDER BY TotalPlayers DESC;
