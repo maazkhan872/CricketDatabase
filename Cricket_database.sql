@@ -823,3 +823,20 @@ SELECT
 FROM Players
 GROUP BY p_role
 ORDER BY TotalPlayers DESC;
+
+-- Show Matches Along with the Coaches of Both Teams --
+SELECT
+    m.m_id AS MatchID,
+    t1.t_name AS Team1,
+    c1.c_name AS Team1Coach,
+    t2.t_name AS Team2,
+    c2.c_name AS Team2Coach
+FROM Matches m
+JOIN Team t1
+ON m.t1_id = t1.t_id
+JOIN Coaches c1
+ON t1.c_id = c1.c_id
+JOIN Team t2
+ON m.t2_id = t2.t_id
+JOIN Coaches c2
+ON t2.c_id = c2.c_id;
