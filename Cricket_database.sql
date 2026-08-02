@@ -851,3 +851,16 @@ ON b.striker_id = p.p_id
 WHERE b.runs_scored = 6
 GROUP BY p.p_id, p.p_name
 ORDER BY TotalSixes DESC;
+
+-- Show Tournament Names with the Number of Participating Teams --
+SELECT
+t.ta_name AS TournamentName,
+t.ta_year AS TournamentYear,
+COUNT(DISTINCT mt.t_id) AS ParticipatingTeams
+FROM Tournaments t
+JOIN Matches m
+ON t.ta_id = m.ta_id
+JOIN Match_Teams mt
+ON m.m_id = mt.m_id
+GROUP BY t.ta_id, t.ta_name, t.ta_year
+ORDER BY ParticipatingTeams DESC;
