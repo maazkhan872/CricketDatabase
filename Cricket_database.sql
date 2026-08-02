@@ -840,3 +840,14 @@ JOIN Team t2
 ON m.t2_id = t2.t_id
 JOIN Coaches c2
 ON t2.c_id = c2.c_id;
+
+-- Find the Player Who Hit the Most Sixes --
+SELECT
+p.p_name AS PlayerName,
+COUNT(*) AS TotalSixes
+FROM Ball_By_Ball b
+JOIN Players p
+ON b.striker_id = p.p_id
+WHERE b.runs_scored = 6
+GROUP BY p.p_id, p.p_name
+ORDER BY TotalSixes DESC;
