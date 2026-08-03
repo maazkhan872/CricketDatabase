@@ -864,3 +864,15 @@ JOIN Match_Teams mt
 ON m.m_id = mt.m_id
 GROUP BY t.ta_id, t.ta_name, t.ta_year
 ORDER BY ParticipatingTeams DESC;
+
+-- Find Players Who Have Never Played a Match --
+SELECT
+    p.p_id,
+    p.p_name,
+    t.t_name AS TeamName
+FROM Players p
+JOIN Team t
+ON p.t_id = t.t_id
+LEFT JOIN Statistics s
+ON p.p_id = s.p_id
+WHERE s.p_id IS NULL;
