@@ -876,3 +876,16 @@ ON p.t_id = t.t_id
 LEFT JOIN Statistics s
 ON p.p_id = s.p_id
 WHERE s.p_id IS NULL;
+
+-- Find the Number of Matches Officiated by Each Pair of Umpires --
+SELECT
+    u1.u_name AS Umpire1,
+    u2.u_name AS Umpire2,
+    COUNT(*) AS TotalMatches
+FROM Matches m
+JOIN Umpire u1
+ON m.u1_id = u1.u_id
+JOIN Umpire u2
+ON m.u2_id = u2.u_id
+GROUP BY u1.u_name, u2.u_name
+ORDER BY TotalMatches DESC;
