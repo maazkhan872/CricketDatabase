@@ -56,7 +56,7 @@ CREATE TABLE Matches (
     t2_id INT,
     ta_id INT,
     u1_id INT,
-    u2_id INT,
+    u2_id Character,
     FOREIGN KEY (v_id) REFERENCES Venues(v_id),
     FOREIGN KEY (t1_id) REFERENCES Team(t_id),
     FOREIGN KEY (t2_id) REFERENCES Team(t_id),
