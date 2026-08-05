@@ -21,7 +21,7 @@ The database contains the following tables:
 Table Name	Description
 Coaches	Stores information about cricket team coaches
 Team	Stores team details and links each team with a coach
-Players	Contains player details including role, batting style, bowling style, and team
+Players	Contains player details including role, batting style, bowling style, and team contribution
 Venues	Stores cricket stadium or venue information
 Umpire	Contains umpire information
 Tournaments	Stores tournament name and year
