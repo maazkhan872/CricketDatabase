@@ -889,3 +889,13 @@ JOIN Umpire u2
 ON m.u2_id = u2.u_id
 GROUP BY u1.u_name, u2.u_name
 ORDER BY TotalMatches DESC;
+
+-- Find the Average Runs Scored in Each Match --
+SELECT
+    m.m_id AS MatchID,
+    ROUND(AVG(s.s_runs), 2) AS AverageRuns
+FROM Matches m
+JOIN Statistics s
+ON m.m_id = s.m_id
+GROUP BY m.m_id
+ORDER BY AverageRuns DESC;
