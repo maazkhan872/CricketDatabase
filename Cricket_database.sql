@@ -899,3 +899,11 @@ JOIN Statistics s
 ON m.m_id = s.m_id
 GROUP BY m.m_id
 ORDER BY AverageRuns DESC;
+
+-- Show Teams That Have Never Played a Match --
+SELECT
+    t.t_name AS TeamName
+FROM Team t
+LEFT JOIN Matches m
+ON t.t_id = m.t1_id OR t.t_id = m.t2_id
+WHERE m.m_id IS NULL;
