@@ -919,3 +919,15 @@ WHERE p.p_role = 'Bowler'
 GROUP BY p.p_id, p.p_name
 ORDER BY TotalWickets DESC
 LIMIT 1;
+
+-- Show Each Coach Along with the Players They Coach --
+SELECT
+c.c_name AS CoachName,
+p.p_name AS PlayerName,
+t.t_name AS TeamName
+FROM Coaches c
+JOIN Team t
+ON c.c_id = t.c_id
+JOIN Players p
+ON t.t_id = p.t_id
+ORDER BY c.c_name, p.p_name;
