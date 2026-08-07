@@ -907,3 +907,15 @@ FROM Team t
 LEFT JOIN Matches m
 ON t.t_id = m.t1_id OR t.t_id = m.t2_id
 WHERE m.m_id IS NULL;
+
+-- Find the Most Successful Bowler (Highest Total Wickets) --
+SELECT
+p.p_name AS PlayerName,
+SUM(s.s_wickets) AS TotalWickets
+FROM Players p
+JOIN Statistics s
+ON p.p_id = s.p_id
+WHERE p.p_role = 'Bowler'
+GROUP BY p.p_id, p.p_name
+ORDER BY TotalWickets DESC
+LIMIT 1;
