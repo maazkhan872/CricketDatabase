@@ -931,3 +931,13 @@ ON c.c_id = t.c_id
 JOIN Players p
 ON t.t_id = p.t_id
 ORDER BY c.c_name, p.p_name;
+
+-- Find the Highest Individual Score --
+SELECT 
+p.p_name AS PlayerName,
+MAX(s.s_runs) AS HighestScore
+FROM Players p
+JOIN Statistics s
+ON p.p_id = s.p_id
+GROUP BY p.p_id, p.p_name
+ORDER BY HighestScore DESC;
