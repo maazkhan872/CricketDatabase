@@ -941,3 +941,16 @@ JOIN Statistics s
 ON p.p_id = s.p_id
 GROUP BY p.p_id, p.p_name
 ORDER BY HighestScore DESC;
+
+-- Find Matches Played at Each Venue with Tournament Name --
+SELECT
+v.v_name AS VenueName,
+COUNT(m.m_id) AS TotalMatches,
+GROUP_CONCAT(DISTINCT t.ta_name SEPARATOR ', ') AS Tournaments
+FROM Venues v
+LEFT JOIN Matches m
+ON v.v_id = m.v_id
+LEFT JOIN Tournaments t
+ON m.ta_id = t.ta_id
+GROUP BY v.v_id, v.v_name
+ORDER BY TotalMatches DESC;
