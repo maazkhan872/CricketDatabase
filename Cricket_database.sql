@@ -954,3 +954,13 @@ LEFT JOIN Tournaments t
 ON m.ta_id = t.ta_id
 GROUP BY v.v_id, v.v_name
 ORDER BY TotalMatches DESC;
+
+-- Find the Most Common Batting Style --
+SELECT
+p_battingstyle AS BattingStyle,
+COUNT(*) AS NumberOfPlayers
+FROM Players
+WHERE p_battingstyle IS NOT NULL
+GROUP BY p_battingstyle
+ORDER BY NumberOfPlayers DESC
+LIMIT 1;
