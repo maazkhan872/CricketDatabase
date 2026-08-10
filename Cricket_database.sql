@@ -964,3 +964,13 @@ WHERE p_battingstyle IS NOT NULL
 GROUP BY p_battingstyle
 ORDER BY NumberOfPlayers DESC
 LIMIT 1;
+
+-- Find the Most Common Bowling Style --
+SELECT
+p_bowlingstyle AS BowlingStyle,
+COUNT(*) AS NumberOfPlayers
+FROM Players
+WHERE p_bowlingstyle IS NOT NULL
+GROUP BY p_bowlingstyle
+ORDER BY NumberOfPlayers DESC
+LIMIT 1;
