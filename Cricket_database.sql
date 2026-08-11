@@ -974,3 +974,11 @@ WHERE p_bowlingstyle IS NOT NULL
 GROUP BY p_bowlingstyle
 ORDER BY NumberOfPlayers DESC
 LIMIT 1;
+
+-- Find the Longest Player Name --
+SELECT
+p_name AS PlayerName,
+LENGTH(p_name) AS NameLength
+FROM Players
+ORDER BY NameLength DESC
+LIMIT 1;
