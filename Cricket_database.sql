@@ -1000,3 +1000,16 @@ ON m.t2_id = t2.t_id
 JOIN Coaches c2
 ON t2.c_id = c2.c_id
 WHERE t1.c_id <> t2.c_id;
+
+-- Find Players Who Scored More Than the Overall Average
+SELECT
+    p.p_name AS PlayerName,
+    s.s_runs AS Runs
+FROM Players p
+JOIN Statistics s
+ON p.p_id = s.p_id
+WHERE s.s_runs > (
+    SELECT AVG(s_runs)
+    FROM Statistics
+)
+ORDER BY s.s_runs DESC;
