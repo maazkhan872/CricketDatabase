@@ -1001,7 +1001,7 @@ JOIN Coaches c2
 ON t2.c_id = c2.c_id
 WHERE t1.c_id <> t2.c_id;
 
--- Find Players Who Scored More Than the Overall Average
+-- Find Players Who Scored More Than the Overall Average --
 SELECT
     p.p_name AS PlayerName,
     s.s_runs AS Runs
@@ -1013,3 +1013,15 @@ WHERE s.s_runs > (
     FROM Statistics
 )
 ORDER BY s.s_runs DESC;
+
+-- Find the Most Expensive Over --
+SELECT
+    m.m_id AS MatchID,
+    b.over_number AS OverNumber,
+    SUM(b.runs_scored) AS OverRuns
+FROM Ball_By_Ball b
+JOIN Matches m
+ON b.m_id = m.m_id
+GROUP BY m.m_id, b.over_number
+ORDER BY OverRuns DESC
+LIMIT 1;
