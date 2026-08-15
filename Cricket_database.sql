@@ -1041,3 +1041,22 @@ WHERE m.DATE = (
 SELECT MIN(DATE)
 FROM Matches
 );
+
+-- Find the Player with the Most Balls Faced --
+SELECT
+p.p_name AS PlayerName,
+COUNT(b.b_id) AS BallsFaced
+FROM Players p
+JOIN Ball_By_Ball b
+ON p.p_id = b.striker_id
+GROUP BY p.p_id, p.p_name
+HAVING COUNT(b.b_id) = (
+SELECT MAX(BallCount)
+FROM (
+    SELECT
+        striker_id,
+        COUNT(b_id) AS BallCount
+        FROM Ball_By_Ball
+        GROUP BY striker_id
+    ) AS PlayerBalls
+);
