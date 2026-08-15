@@ -1025,3 +1025,19 @@ ON b.m_id = m.m_id
 GROUP BY m.m_id, b.over_number
 ORDER BY OverRuns DESC
 LIMIT 1;
+
+-- Find the Earliest Match in the Database --
+SELECT
+m.m_id AS MatchID,
+m.DATE AS MatchDate,
+t1.t_name AS Team1,
+t2.t_name AS Team2
+FROM Matches m
+JOIN Team t1
+ON m.t1_id = t1.t_id
+JOIN Team t2
+ON m.t2_id = t2.t_id
+WHERE m.DATE = (
+SELECT MIN(DATE)
+FROM Matches
+);
