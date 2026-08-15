@@ -1060,3 +1060,16 @@ FROM (
         GROUP BY striker_id
     ) AS PlayerBalls
 );
+
+-- Find the Difference Between Each Player's Runs and Average Runs --
+SELECT
+    p.p_name AS PlayerName,
+    s.s_runs AS PlayerRuns,
+    ROUND(
+        s.s_runs - (SELECT AVG(s_runs) FROM Statistics),
+        2
+    ) AS DifferenceFromAverage
+FROM Players p
+JOIN Statistics s
+ON p.p_id = s.p_id
+ORDER BY DifferenceFromAverage DESC;
