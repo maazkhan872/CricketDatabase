@@ -1073,3 +1073,15 @@ FROM Players p
 JOIN Statistics s
 ON p.p_id = s.p_id
 ORDER BY DifferenceFromAverage DESC;
+
+-- Find the Match with the Highest Total Runs --
+SELECT
+m.m_id AS MatchID,
+m.DATE AS MatchDate,
+SUM(s.s_runs) AS TotalRuns
+FROM Matches m
+JOIN Statistics s
+ON m.m_id = s.m_id
+GROUP BY m.m_id, m.DATE
+ORDER BY TotalRuns DESC
+LIMIT 1;
