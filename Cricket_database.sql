@@ -1085,3 +1085,15 @@ ON m.m_id = s.m_id
 GROUP BY m.m_id, m.DATE
 ORDER BY TotalRuns DESC
 LIMIT 1;
+
+-- Find Players Who Have Both Batting and Bowling Records
+SELECT
+p.p_name AS PlayerName,
+SUM(s.s_runs) AS TotalRuns,
+SUM(s.s_wickets) AS TotalWickets
+FROM Players p
+JOIN Statistics s
+ON p.p_id = s.p_id
+GROUP BY p.p_id, p.p_name
+HAVING SUM(s.s_runs) > 0
+AND SUM(s.s_wickets) > 0;
