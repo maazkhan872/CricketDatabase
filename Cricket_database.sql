@@ -1097,3 +1097,17 @@ ON p.p_id = s.p_id
 GROUP BY p.p_id, p.p_name
 HAVING SUM(s.s_runs) > 0
 AND SUM(s.s_wickets) > 0;
+
+-- Find the Latest Match --
+SELECT
+    m.m_id AS MatchID,
+    m.DATE AS MatchDate,
+    t1.t_name AS Team1,
+    t2.t_name AS Team2,
+    m.m_result AS Result
+FROM Matches m
+JOIN Team t1
+    ON m.t1_id = t1.t_id
+JOIN Team t2
+    ON m.t2_id = t2.t_id
+WHERE m.DATE = (SELECT MAX(DATE) FROM Matches);
