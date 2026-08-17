@@ -1111,3 +1111,13 @@ JOIN Team t1
 JOIN Team t2
     ON m.t2_id = t2.t_id
 WHERE m.DATE = (SELECT MAX(DATE) FROM Matches);
+
+-- Find the Average Wickets Taken by Players --
+SELECT
+    p.p_name AS PlayerName,
+    ROUND(AVG(s.s_wickets), 2) AS AverageWickets
+FROM Players p
+JOIN Statistics s
+    ON p.p_id = s.p_id
+GROUP BY p.p_id, p.p_name
+ORDER BY AverageWickets DESC;
