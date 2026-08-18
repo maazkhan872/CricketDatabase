@@ -1134,3 +1134,22 @@ LEFT JOIN Statistics s
     ON m.m_id = s.m_id
 GROUP BY ta.ta_id, ta.ta_name, ta.ta_year
 ORDER BY TotalRuns DESC;
+
+-- Find the Team with the Most Players --
+SELECT
+    t.t_name AS TeamName,
+    COUNT(p.p_id) AS TotalPlayers
+FROM Team t
+LEFT JOIN Players p
+    ON t.t_id = p.t_id
+GROUP BY t.t_id, t.t_name
+HAVING COUNT(p.p_id) = (
+    SELECT MAX(PlayerCount)
+    FROM (
+        SELECT COUNT(p2.p_id) AS PlayerCount
+        FROM Team t2
+        LEFT JOIN Players p2
+            ON t2.t_id = p2.t_id
+        GROUP BY t2.t_id
+    ) AS TeamCounts
+);
