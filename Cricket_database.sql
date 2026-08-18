@@ -1121,3 +1121,16 @@ JOIN Statistics s
     ON p.p_id = s.p_id
 GROUP BY p.p_id, p.p_name
 ORDER BY AverageWickets DESC;
+
+-- Find the Total Runs Scored in Each Tournament --
+SELECT
+    ta.ta_name AS TournamentName,
+    ta.ta_year AS TournamentYear,
+    COALESCE(SUM(s.s_runs), 0) AS TotalRuns
+FROM Tournaments ta
+LEFT JOIN Matches m
+    ON ta.ta_id = m.ta_id
+LEFT JOIN Statistics s
+    ON m.m_id = s.m_id
+GROUP BY ta.ta_id, ta.ta_name, ta.ta_year
+ORDER BY TotalRuns DESC;
