@@ -1153,3 +1153,17 @@ HAVING COUNT(p.p_id) = (
         GROUP BY t2.t_id
     ) AS TeamCounts
 );
+
+-- Find Matches Where a Player Scored More Than 100 Runs --
+SELECT
+    m.m_id AS MatchID,
+    m.DATE AS MatchDate,
+    p.p_name AS PlayerName,
+    s.s_runs AS RunsScored
+FROM Statistics s
+JOIN Players p
+    ON s.p_id = p.p_id
+JOIN Matches m
+    ON s.m_id = m.m_id
+WHERE s.s_runs > 100
+ORDER BY s.s_runs DESC;
