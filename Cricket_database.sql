@@ -1167,3 +1167,16 @@ JOIN Matches m
     ON s.m_id = m.m_id
 WHERE s.s_runs > 100
 ORDER BY s.s_runs DESC;
+
+-- Find the Venue with the Highest Number of Runs Scored --
+SELECT
+    v.v_name AS VenueName,
+    COALESCE(SUM(b.runs_scored), 0) AS TotalRuns
+FROM Venues v
+LEFT JOIN Matches m
+    ON v.v_id = m.v_id
+LEFT JOIN Ball_By_Ball b
+    ON m.m_id = b.m_id
+GROUP BY v.v_id, v.v_name
+ORDER BY TotalRuns DESC
+LIMIT 1;
