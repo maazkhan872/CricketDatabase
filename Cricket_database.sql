@@ -1191,3 +1191,17 @@ LEFT JOIN Ball_By_Ball b
     ON m.m_id = b.m_id
 GROUP BY m.m_id, m.DATE
 ORDER BY TotalSixes DESC;
+
+-- Find the Most Successful Bowler in Each Match --
+SELECT
+    m.m_id AS MatchID,
+    p.p_name AS BowlerName,
+    COUNT(*) AS Wickets
+FROM Ball_By_Ball b
+JOIN Matches m
+    ON b.m_id = m.m_id
+JOIN Players p
+    ON b.bowler_id = p.p_id
+WHERE b.is_wicket = TRUE
+GROUP BY m.m_id, p.p_id, p.p_name
+ORDER BY m.m_id, Wickets DESC;
