@@ -1180,3 +1180,14 @@ LEFT JOIN Ball_By_Ball b
 GROUP BY v.v_id, v.v_name
 ORDER BY TotalRuns DESC
 LIMIT 1;
+
+-- Find the Number of Sixes Hit in Each Match --
+SELECT
+    m.m_id AS MatchID,
+    m.DATE AS MatchDate,
+    COUNT(CASE WHEN b.runs_scored = 6 THEN 1 END) AS TotalSixes
+FROM Matches m
+LEFT JOIN Ball_By_Ball b
+    ON m.m_id = b.m_id
+GROUP BY m.m_id, m.DATE
+ORDER BY TotalSixes DESC;
