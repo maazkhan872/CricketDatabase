@@ -1218,3 +1218,14 @@ JOIN Statistics s2
 JOIN Matches m
     ON s1.m_id = m.m_id
 GROUP BY m.m_id;
+
+-- Find Teams with Their Total Number of Wins --
+SELECT
+    t.t_name AS TeamName,
+    COUNT(m.m_id) AS TotalWins
+FROM Team t
+LEFT JOIN Matches m
+    ON (t.t_id = m.t1_id OR t.t_id = m.t2_id)
+WHERE m.m_result = 'Won'
+GROUP BY t.t_id, t.t_name
+ORDER BY TotalWins DESC;
