@@ -1205,3 +1205,16 @@ JOIN Players p
 WHERE b.is_wicket = TRUE
 GROUP BY m.m_id, p.p_id, p.p_name
 ORDER BY m.m_id, Wickets DESC;
+
+-- Find the Highest Partnership Score Between Players in a Match --
+
+SELECT
+    m.m_id AS MatchID,
+    MAX(s1.s_runs + s2.s_runs) AS HighestCombinedScore
+FROM Statistics s1
+JOIN Statistics s2
+    ON s1.m_id = s2.m_id
+    AND s1.p_id < s2.p_id
+JOIN Matches m
+    ON s1.m_id = m.m_id
+GROUP BY m.m_id;
