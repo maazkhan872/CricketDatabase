@@ -1229,3 +1229,15 @@ LEFT JOIN Matches m
 WHERE m.m_result = 'Won'
 GROUP BY t.t_id, t.t_name
 ORDER BY TotalWins DESC;
+
+-- Find the Average Runs Scored at Each Venue --
+SELECT
+    v.v_name AS VenueName,
+    ROUND(AVG(s.s_runs), 2) AS AverageRuns
+FROM Venues v
+JOIN Matches m
+    ON v.v_id = m.v_id
+JOIN Statistics s
+    ON m.m_id = s.m_id
+GROUP BY v.v_id, v.v_name
+ORDER BY AverageRuns DESC;
