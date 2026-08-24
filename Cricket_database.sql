@@ -1241,3 +1241,14 @@ JOIN Statistics s
     ON m.m_id = s.m_id
 GROUP BY v.v_id, v.v_name
 ORDER BY AverageRuns DESC;
+
+-- Find Players Who Scored in Every Match They Played --
+SELECT
+    p.p_name AS PlayerName,
+    COUNT(s.m_id) AS MatchesPlayed,
+    SUM(CASE WHEN s.s_runs > 0 THEN 1 ELSE 0 END) AS MatchesWithRuns
+FROM Players p
+JOIN Statistics s
+    ON p.p_id = s.p_id
+GROUP BY p.p_id, p.p_name
+HAVING COUNT(s.m_id) = SUM(CASE WHEN s.s_runs > 0 THEN 1 ELSE 0 END);
