@@ -1264,3 +1264,15 @@ JOIN Matches m
 GROUP BY u.u_id, u.u_name
 ORDER BY MatchesOfficiated DESC
 LIMIT 1;
+
+-- Find the Match with the Highest Number of Wickets --
+SELECT
+    m.m_id AS MatchID,
+    m.DATE AS MatchDate,
+    COUNT(CASE WHEN b.is_wicket = TRUE THEN 1 END) AS TotalWickets
+FROM Matches m
+LEFT JOIN Ball_By_Ball b
+    ON m.m_id = b.m_id
+GROUP BY m.m_id, m.DATE
+ORDER BY TotalWickets DESC
+LIMIT 1;
