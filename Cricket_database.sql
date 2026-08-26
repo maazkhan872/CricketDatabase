@@ -1252,3 +1252,15 @@ JOIN Statistics s
     ON p.p_id = s.p_id
 GROUP BY p.p_id, p.p_name
 HAVING COUNT(s.m_id) = SUM(CASE WHEN s.s_runs > 0 THEN 1 ELSE 0 END);
+
+-- Find the Most Frequently Used Umpire --
+SELECT
+    u.u_name AS UmpireName,
+    COUNT(*) AS MatchesOfficiated
+FROM Umpire u
+JOIN Matches m
+    ON u.u_id = m.u1_id
+    OR u.u_id = m.u2_id
+GROUP BY u.u_id, u.u_name
+ORDER BY MatchesOfficiated DESC
+LIMIT 1;
