@@ -1276,3 +1276,14 @@ LEFT JOIN Ball_By_Ball b
 GROUP BY m.m_id, m.DATE
 ORDER BY TotalWickets DESC
 LIMIT 1;
+
+-- Find the Total Boundaries (4s and 6s) Hit by Each Player --
+SELECT
+    p.p_name AS PlayerName,
+    SUM(CASE WHEN b.runs_scored = 4 THEN 1 ELSE 0 END) AS Fours,
+    SUM(CASE WHEN b.runs_scored = 6 THEN 1 ELSE 0 END) AS Sixes
+FROM Players p
+JOIN Ball_By_Ball b
+    ON p.p_id = b.striker_id
+GROUP BY p.p_id, p.p_name
+ORDER BY (Fours + Sixes) DESC;
