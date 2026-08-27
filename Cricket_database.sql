@@ -1287,3 +1287,14 @@ JOIN Ball_By_Ball b
     ON p.p_id = b.striker_id
 GROUP BY p.p_id, p.p_name
 ORDER BY (Fours + Sixes) DESC;
+
+-- Find Matches Where No Wicket Was Recorded --
+SELECT
+    m.m_id AS MatchID,
+    m.DATE AS MatchDate,
+    COUNT(b.b_id) AS TotalBalls
+FROM Matches m
+LEFT JOIN Ball_By_Ball b
+    ON m.m_id = b.m_id
+GROUP BY m.m_id, m.DATE
+HAVING SUM(CASE WHEN b.is_wicket = TRUE THEN 1 ELSE 0 END) = 0;
