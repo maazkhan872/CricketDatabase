@@ -1298,3 +1298,14 @@ LEFT JOIN Ball_By_Ball b
     ON m.m_id = b.m_id
 GROUP BY m.m_id, m.DATE
 HAVING SUM(CASE WHEN b.is_wicket = TRUE THEN 1 ELSE 0 END) = 0;
+
+-- Find the Highest Run-Scoring Over in Each Match --
+SELECT
+    m.m_id AS MatchID,
+    b.over_number AS OverNumber,
+    SUM(b.runs_scored) AS TotalOverRuns
+FROM Matches m
+JOIN Ball_By_Ball b
+    ON m.m_id = b.m_id
+GROUP BY m.m_id, b.over_number
+ORDER BY m.m_id, TotalOverRuns DESC;
