@@ -1309,3 +1309,16 @@ JOIN Ball_By_Ball b
     ON m.m_id = b.m_id
 GROUP BY m.m_id, b.over_number
 ORDER BY m.m_id, TotalOverRuns DESC;
+
+-- Find Players Who Have Never Been a Striker --
+SELECT
+    p.p_name AS PlayerName,
+    t.t_name AS TeamName
+FROM Players p
+JOIN Team t
+    ON p.t_id = t.t_id
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM Ball_By_Ball b
+    WHERE b.striker_id = p.p_id
+);
