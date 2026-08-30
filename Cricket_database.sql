@@ -1335,3 +1335,13 @@ JOIN Statistics s
 GROUP BY p.p_id, p.p_name
 ORDER BY PerformanceScore DESC
 LIMIT 1;
+
+-- Find Matches Where a Team Played Against Itself --
+SELECT
+    m.m_id AS MatchID,
+    m.DATE AS MatchDate,
+    t1.t_name AS TeamName
+FROM Matches m
+JOIN Team t1
+    ON m.t1_id = t1.t_id
+WHERE m.t1_id = m.t2_id;
