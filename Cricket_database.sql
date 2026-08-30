@@ -1322,3 +1322,16 @@ WHERE NOT EXISTS (
     FROM Ball_By_Ball b
     WHERE b.striker_id = p.p_id
 );
+
+-- Find the Player with the Highest Total Runs and Wickets Combined --
+SELECT
+    p.p_name AS PlayerName,
+    SUM(s.s_runs) AS TotalRuns,
+    SUM(s.s_wickets) AS TotalWickets,
+    SUM(s.s_runs) + (SUM(s.s_wickets) * 20) AS PerformanceScore
+FROM Players p
+JOIN Statistics s
+    ON p.p_id = s.p_id
+GROUP BY p.p_id, p.p_name
+ORDER BY PerformanceScore DESC
+LIMIT 1;
