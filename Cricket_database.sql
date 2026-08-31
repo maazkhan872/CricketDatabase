@@ -1358,3 +1358,11 @@ GROUP BY p.p_id, p.p_name
 HAVING SUM(s.s_runs) > 0
    AND SUM(s.s_wickets) = 0
 ORDER BY TotalRuns DESC;
+
+-- Find the Number of Matches Played on Each Date --
+SELECT
+    DATE AS MatchDate,
+    COUNT(m_id) AS MatchesPlayed
+FROM Matches
+GROUP BY DATE
+ORDER BY DATE ASC;
