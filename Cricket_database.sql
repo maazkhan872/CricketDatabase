@@ -1345,3 +1345,16 @@ FROM Matches m
 JOIN Team t1
     ON m.t1_id = t1.t_id
 WHERE m.t1_id = m.t2_id;
+
+-- Find Players Who Scored Runs but Did Not Take Any Wickets --
+SELECT
+    p.p_name AS PlayerName,
+    SUM(s.s_runs) AS TotalRuns,
+    SUM(s.s_wickets) AS TotalWickets
+FROM Players p
+JOIN Statistics s
+    ON p.p_id = s.p_id
+GROUP BY p.p_id, p.p_name
+HAVING SUM(s.s_runs) > 0
+   AND SUM(s.s_wickets) = 0
+ORDER BY TotalRuns DESC;
