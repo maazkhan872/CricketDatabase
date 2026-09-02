@@ -1383,3 +1383,13 @@ WHERE s.s_runs = (
     WHERE s2.m_id = s.m_id
 )
 ORDER BY m.m_id;
+
+-- Find the Number of Balls Bowled by Each Bowler --
+SELECT
+    p.p_name AS BowlerName,
+    COUNT(b.b_id) AS BallsBowled
+FROM Players p
+JOIN Ball_By_Ball b
+    ON p.p_id = b.bowler_id
+GROUP BY p.p_id, p.p_name
+ORDER BY BallsBowled DESC;
