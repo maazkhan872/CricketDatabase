@@ -1366,3 +1366,20 @@ SELECT
 FROM Matches
 GROUP BY DATE
 ORDER BY DATE ASC;
+
+-- Find the Highest Scoring Player in Each Match --
+SELECT
+    m.m_id AS MatchID,
+    p.p_name AS PlayerName,
+    s.s_runs AS RunsScored
+FROM Statistics s
+JOIN Matches m
+    ON s.m_id = m.m_id
+JOIN Players p
+    ON s.p_id = p.p_id
+WHERE s.s_runs = (
+    SELECT MAX(s2.s_runs)
+    FROM Statistics s2
+    WHERE s2.m_id = s.m_id
+)
+ORDER BY m.m_id;
