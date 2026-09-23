@@ -862,8 +862,7 @@ JOIN Matches m
 ON t.ta_id = m.ta_id
 JOIN Match_Teams mt
 ON m.m_id = mt.m_id
-GROUP BY t.ta_id, t.ta_name, t.ta_year
-ORDER BY ParticipatingTeams DESC;
+GROUP BY t.ta_id, t.ta_name, t.ta_year;
 
 -- Find Players Who Have Never Played a Match --
 SELECT
