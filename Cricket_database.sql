@@ -1398,3 +1398,6 @@ ON Statistics (p_id, s_runs);
 
 CREATE INDEX idx_matches_date
 ON Matches (`DATE`);
+
+SHOW INDEX FROM Statistics;
+SHOW INDEX FROM Matches;
