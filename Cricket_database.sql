@@ -1392,3 +1392,9 @@ JOIN Ball_By_Ball b
     ON p.p_id = b.bowler_id
 GROUP BY p.p_id, p.p_name
 ORDER BY BallsBowled DESC;
+
+CREATE INDEX idx_statistics_player_runs
+ON Statistics (p_id, s_runs);
+
+CREATE INDEX idx_matches_date
+ON Matches (`DATE`);
