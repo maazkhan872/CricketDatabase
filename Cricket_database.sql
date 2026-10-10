@@ -1401,3 +1401,7 @@ ON Matches (`DATE`);
 
 SHOW INDEX FROM Statistics;
 SHOW INDEX FROM Matches;
+
+-- Create Indedxing on Match Date --
+CREATE INDEX idx_matches_date
+ON Matches (`DATE`);
