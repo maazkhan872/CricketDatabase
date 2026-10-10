@@ -1409,3 +1409,7 @@ ON Matches (`DATE`);
 -- Indexing on bowler wickets --
 CREATE INDEX idx_ball_bowler_wicket
 ON Ball_By_Ball (bowler_id, is_wicket);
+
+-- Show Index --
+SHOW INDEX FROM Matches;
+SHOW INDEX FROM Ball_By_Ball;
