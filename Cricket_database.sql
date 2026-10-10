@@ -1405,3 +1405,7 @@ SHOW INDEX FROM Matches;
 -- Create Indedxing on Match Date --
 CREATE INDEX idx_matches_date
 ON Matches (`DATE`);
+
+-- Indexing on bowler wickets --
+CREATE INDEX idx_ball_bowler_wicket
+ON Ball_By_Ball (bowler_id, is_wicket);
