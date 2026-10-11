@@ -1419,3 +1419,10 @@ EXPLAIN
 SELECT *
 FROM Matches
 WHERE `DATE` = '2024-06-01';
+
+-- Show Top 10 Players who runs fast --
+SELECT striker_id, SUM(runs_scored) AS total_runs
+FROM Ball_By_Ball
+GROUP BY striker_id
+ORDER BY total_runs DESC
+LIMIT 10;
