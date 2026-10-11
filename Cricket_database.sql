@@ -1413,3 +1413,9 @@ ON Ball_By_Ball (bowler_id, is_wicket);
 -- Show Index --
 SHOW INDEX FROM Matches;
 SHOW INDEX FROM Ball_By_Ball;
+
+-- Use explain --
+EXPLAIN
+SELECT *
+FROM Matches
+WHERE `DATE` = '2024-06-01';
